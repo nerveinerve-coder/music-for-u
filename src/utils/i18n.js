@@ -1,0 +1,612 @@
+// 다국어 번역 파일
+// ko: 한국어 / en: English / ja: 日本語
+
+export const LANGUAGES = [
+  { code: 'ko', label: '한국어', flag: '🇰🇷' },
+  { code: 'en', label: 'English', flag: '🇺🇸' },
+  { code: 'ja', label: '日本語', flag: '🇯🇵' },
+];
+
+export const translations = {
+  ko: {
+    // 네비게이션
+    nav: {
+      cta: '음악 선물 만들기',
+    },
+
+    // 랜딩 페이지
+    landing: {
+      badge: '🎵 Personal music gifts, made for someone you love.',
+      heroTitle1: '소중한 사람에게',
+      heroTitle2: '음악을 선물',
+      heroTitle3: '하세요.',
+      heroSub: '짧은 메시지와 좋아하는 노래를 알려주시면,\n세상에 하나뿐인 음악 선물 페이지로 만들어드려요.',
+      heroCta: '🎁 음악 선물 만들기',
+      heroNote: '신청은 3분이면 충분해요. 완성된 선물 페이지는 이메일로 보내드려요.',
+      giftCardFor: 'A music gift for',
+      giftCardFrom: 'From.',
+      giftCardSample: '"올해도 너답게 빛났으면 좋겠어."',
+      giftCardMusicReady: '맞춤 음악 재생 준비됨',
+      giftCardMusicInfo: '아이유 감성 · 따뜻한 · 잔잔한',
+      valueSectionTitle: '음악 파일 하나가 아니에요.',
+      valueSectionSub: '받는 사람이 링크를 열면 이런 걸 경험해요.',
+      valueCards: [
+        { emoji: '💬', title: '마음 한 줄이 담긴 선물 카드', desc: '편지처럼 길게 쓰지 않아도 돼요. 짧은 메시지 하나가 큰 감동이 되어요.' },
+        { emoji: '🎧', title: '취향을 반영한 맞춤 음악', desc: '좋아하는 가수와 분위기를 바탕으로, 받는 사람만을 위한 음악을 제작해요.' },
+        { emoji: '🔗', title: '바로 공유할 수 있는 선물 페이지', desc: '링크 하나로 음악과 메시지를 한번에 전달해요. 앱 설치 없이 바로 열려요.' },
+      ],
+      howTitle: '어떻게 만들어지나요?',
+      howSub: '신청부터 선물까지, 5단계면 돼요.',
+      howSteps: [
+        { step: '01', icon: '🙋', title: '선물할 사람을 정해요', desc: '연인, 친구, 가족... 누구에게 음악을 선물할지 알려주세요.' },
+        { step: '02', icon: '🎵', title: '좋아하는 음악을 알려줘요', desc: '취향을 바탕으로 세상에 하나뿐인 음악을 만들어드려요.' },
+        { step: '03', icon: '🎁', title: 'Music for U가 준비해요', desc: '음악 선물 페이지를 정성껏 준비하는 시간이 필요해요.' },
+        { step: '04', icon: '📧', title: '완성된 링크를 받아요', desc: '이메일로 선물 페이지 링크가 도착해요.' },
+        { step: '05', icon: '💌', title: '소중한 사람에게 전해요', desc: '카카오톡, 문자, DM 등으로 직접 선물할 수 있어요.' },
+      ],
+      ctaTitle: '지금 바로 음악 선물을 만들어보세요.',
+      ctaSub: '3분이면 충분해요. 긴 편지 없이도 마음이 전달돼요.',
+      footerNote: '입력하신 가수와 노래는 분위기 참고용으로만 사용해요.\n기존 곡을 복제하지 않고, 감성과 무드를 참고해 새롭게 제작해요.',
+    },
+
+    // 폼 공통
+    form: {
+      timeNote: '신청은 3분이면 충분해요',
+      next: '다음으로',
+      back: '이전으로',
+      submit: '신청 접수하기',
+      submitting: '신청 접수 중...',
+      privacyNote: '신청 내용은 음악 제작과 선물 페이지 전달을 위해서만 사용돼요.',
+      submitError: '일시적인 오류가 발생했어요. 잠시 후 다시 시도해주세요.',
+    },
+
+    // 폼 단계 제목
+    steps: [
+      { title: '누구에게 선물할까요?', subtitle: '선물 받을 분의 정보를 알려주세요.' },
+      { title: '어떤 마음을 전할까요?', subtitle: '짧은 메시지 하나면 충분해요.' },
+      { title: '어떤 음악을 좋아하나요?', subtitle: '취향을 알면 더 잘 맞는 음악을 만들어요.' },
+      { title: '어디로 선물을 보내드릴까요?', subtitle: '완성된 링크를 이메일로 보내드려요.' },
+      { title: '신청 내용을 확인해요', subtitle: '내용이 맞으면 아래 버튼을 눌러주세요.' },
+    ],
+
+    // 진행 바 라벨
+    progressLabels: ['선물 받는 분', '전하고 싶은 마음', '음악 취향', '연락처', '내용 확인'],
+
+    // Step 1
+    step1: {
+      targetLabel: '누구를 위한 음악인가요?',
+      receiverLabel: '받는 분의 이름이나 별명',
+      receiverPlaceholder: '예: 지민, 엄마, 민수',
+      receiverHelp: '선물 페이지에 보여질 이름이에요.',
+      senderLabel: '보내는 분의 이름이나 별명',
+      senderPlaceholder: '예: 은석, 너를 응원하는 친구',
+      senderHelp: '받는 분이 누가 보낸 선물인지 알 수 있어요.',
+      targets: [
+        { value: '연인', label: '연인', emoji: '💑' },
+        { value: '친구', label: '친구', emoji: '👫' },
+        { value: '가족', label: '가족', emoji: '👨‍👩‍👧' },
+        { value: '동료', label: '동료', emoji: '🤝' },
+        { value: '나', label: '나', emoji: '🙋' },
+        { value: '기타', label: '기타', emoji: '💌' },
+      ],
+      errors: {
+        target: '누구를 위한 음악인지 선택해주세요.',
+        receiver: '받는 분의 이름이나 별명을 입력해주세요.',
+        sender: '보내는 분의 이름이나 별명을 입력해주세요.',
+      },
+    },
+
+    // Step 2
+    step2: {
+      purposeLabel: '어떤 선물인가요?',
+      messageLabel: '전하고 싶은 마음 한 줄',
+      messagePlaceholder: '예: 올해도 너답게 빛났으면 좋겠어.',
+      messageHelp: '한 문장만 적어도 충분해요. 이 메시지는 선물 페이지에 담겨요.',
+      messageTip: '💬 편지처럼 길게 쓰지 않아도 괜찮아요. 짧을수록 마음이 더 잘 전달되기도 해요.',
+      purposes: [
+        { value: '생일', label: '생일', emoji: '🎂' },
+        { value: '기념일', label: '기념일', emoji: '💝' },
+        { value: '응원', label: '응원', emoji: '🌟' },
+        { value: '위로', label: '위로', emoji: '🤗' },
+        { value: '고백', label: '고백', emoji: '💌' },
+        { value: '감사', label: '감사', emoji: '🙏' },
+        { value: '그냥 선물', label: '그냥 선물', emoji: '🎁' },
+      ],
+      errors: {
+        purpose: '선물 목적을 선택해주세요.',
+        message: '짧은 메시지를 입력해주세요. 한 문장만 적어도 충분해요.',
+      },
+    },
+
+    // Step 3
+    step3: {
+      artistLabel: '좋아하는 가수 이름',
+      artistPlaceholder: '예: 아이유, Taylor Swift, 藤井風',
+      artistHelp: '음악의 분위기를 참고하기 위한 정보예요.',
+      songLabel: '좋아하는 노래 제목',
+      songPlaceholder: '예: 밤편지, Lover, Shinunoga E-Wa',
+      songHelp: '기존 곡을 복제하지 않고, 감성과 분위기만 참고해요.',
+      moodLabel: '원하는 음악 분위기',
+      moodMultiple: '여러 개 선택해도 좋아요.',
+      moodCustomPlaceholder: '직접 입력해요',
+      moodCustomAdd: '추가',
+      moodTip: '🎵 입력하신 가수와 노래는 분위기 참고용으로만 사용해요. 기존 곡을 복제하지 않고, 감성과 무드를 참고해 새로운 음악으로 제작돼요.',
+      moods: ['따뜻한', '잔잔한', '설레는', '몽환적인', '신나는', '위로되는', '로맨틱한', '새벽 감성', '시티팝', '어쿠스틱'],
+      errors: {
+        artist: '참고할 가수 이름을 입력해주세요.',
+        song: '참고할 노래 제목을 입력해주세요.',
+        moods: '원하는 음악 분위기를 선택하거나 입력해주세요.',
+      },
+    },
+
+    // Step 4
+    step4: {
+      emailLabel: '선물 페이지를 받을 이메일',
+      emailPlaceholder: '예: example@gmail.com',
+      emailHelp: '완성된 음악 선물 페이지 링크를 보내드릴 이메일이에요.',
+      emailPrivacy: '🔒 입력하신 이메일은 음악 선물 페이지 전달 용도로만 사용해요.',
+      mbtiLabel: 'MBTI',
+      mbtiOptional: '선택 사항',
+      mbtiHelp: '받는 분의 MBTI를 알면 음악 분위기를 더 잘 반영할 수 있어요. 몰라도 괜찮아요!',
+      mbtiSaved: '로 저장돼요',
+      mbtiPartial: '💡 MBTI를 입력하려면 4가지 항목을 모두 선택해주세요. 아니면 비워두셔도 괜찮아요.',
+      mbtiGroups: ['에너지 방향', '인식 방식', '판단 방식', '생활 방식'],
+      errors: {
+        emailRequired: '음악 선물 페이지를 받을 이메일 주소를 입력해주세요.',
+        emailInvalid: '올바른 이메일 주소를 입력해주세요.',
+      },
+    },
+
+    // Step 5
+    step5: {
+      intro: '내용을 확인하고 신청을 접수해요.',
+      edit: '수정',
+      labels: {
+        target: '선물 대상',
+        receiver: '받는 분',
+        sender: '보내는 분',
+        purpose: '선물 목적',
+        message: '마음 한 줄',
+        artist: '좋아하는 가수',
+        song: '좋아하는 노래',
+        moods: '음악 분위기',
+        email: '이메일',
+        mbti: 'MBTI',
+        mbtiEmpty: '미입력',
+      },
+      privacy: '신청 내용은 음악 제작과 선물 페이지 전달을 위해서만 사용돼요.',
+    },
+
+    // 완료 페이지
+    complete: {
+      title: '음악 선물 신청이\n접수되었어요!',
+      sub1: '님을 위한 음악을 준비할게요.',
+      sub2: '완성되면',
+      sub3: '로\n선물 페이지 링크를 보내드릴게요.',
+      flowTitle: '이제 어떻게 되나요?',
+      flowSteps: ['신청 접수 완료', 'Suno AI로 음악 제작', '음악 선물 페이지 완성', '이메일로 링크 전달', '소중한 분께 직접 선물'],
+      tip: '💌 완성된 선물 페이지 링크를 먼저 확인하신 뒤, 소중한 분께 카카오톡, 문자, DM 등으로 직접 전달해주세요.',
+      backHome: '홈으로 돌아가기',
+    },
+
+    // 선물 페이지
+    gift: {
+      loading: '선물을 열고 있어요...',
+      errorTitle: '선물을 찾지 못했어요',
+      errorSub: '선물 정보를 불러오지 못했어요. 링크를 다시 확인해주세요.',
+      backHome: '홈으로 돌아가기',
+      giftFor: 'A music gift for',
+      messageLabel: 'Message',
+      arrived: '당신을 위해 준비한 음악이 도착했어요',
+      playNow: '🎵 바로 재생해보세요',
+      openDrive: '🎧 Google Drive에서 듣기',
+      preparing: '아직 음악 선물이 준비 중이에요',
+      preparingSub: '완성되면 신청하신 분의 이메일로 알려드릴게요.\n조금만 기다려주세요 🙏',
+      musicInfoLabel: '음악 정보',
+      musicInfoRows: ['참고 가수', '참고 노래', '분위기', 'MBTI'],
+      copyright: '기존 곡을 복제하지 않고, 감성과 무드를 참고해 새롭게 제작한 음악이에요.',
+      copyLink: '🔗 이 링크 복사하기',
+      copied: '✅ 링크 복사됨!',
+      makeYours: '🎁 나도 음악 선물 만들기',
+    },
+  },
+
+  // =====================
+  // ENGLISH
+  // =====================
+  en: {
+    nav: {
+      cta: 'Create a Music Gift',
+    },
+
+    landing: {
+      badge: '🎵 A personal music gift, made just for someone you love.',
+      heroTitle1: 'Give the gift of',
+      heroTitle2: 'music',
+      heroTitle3: 'to someone special.',
+      heroSub: 'Share a short message and a song you love —\nwe\'ll create a one-of-a-kind music gift page just for them.',
+      heroCta: '🎁 Create a Music Gift',
+      heroNote: 'Takes about 3 minutes. We\'ll send the finished gift page to your email.',
+      giftCardFor: 'A music gift for',
+      giftCardFrom: 'From',
+      giftCardSample: '"Hope this year shines as bright as you do."',
+      giftCardMusicReady: 'Your custom track is ready',
+      giftCardMusicInfo: 'IU-inspired · Warm · Mellow',
+      valueSectionTitle: 'It\'s more than just a music file.',
+      valueSectionSub: 'Here\'s what they\'ll experience when they open the link.',
+      valueCards: [
+        { emoji: '💬', title: 'A personal message card', desc: 'No need to write a long letter. A single heartfelt line says it all.' },
+        { emoji: '🎧', title: 'Music made for their taste', desc: 'We craft a unique song inspired by their favorite artist and vibe.' },
+        { emoji: '🔗', title: 'A shareable gift page', desc: 'One link delivers the music and message. No app download needed.' },
+      ],
+      howTitle: 'How does it work?',
+      howSub: 'From request to gift — just 5 simple steps.',
+      howSteps: [
+        { step: '01', icon: '🙋', title: 'Choose who it\'s for', desc: 'A partner, friend, family member — whoever you want to surprise.' },
+        { step: '02', icon: '🎵', title: 'Tell us their music taste', desc: 'We\'ll create a one-of-a-kind track inspired by their favorite sound.' },
+        { step: '03', icon: '🎁', title: 'We prepare your gift', desc: 'Give us a little time to craft the perfect music gift page.' },
+        { step: '04', icon: '📧', title: 'Receive the link by email', desc: 'We\'ll send the finished gift page link straight to your inbox.' },
+        { step: '05', icon: '💌', title: 'Share it with them', desc: 'Send it by text, DM, email — however feels right.' },
+      ],
+      ctaTitle: 'Ready to give a gift they\'ll never forget?',
+      ctaSub: 'It only takes 3 minutes. No long letters required.',
+      footerNote: 'Artist and song references are used only as creative inspiration.\nAll music is original — not a copy or reproduction of any existing track.',
+    },
+
+    form: {
+      timeNote: 'Takes about 3 minutes',
+      next: 'Continue',
+      back: 'Go back',
+      submit: 'Submit Request',
+      submitting: 'Submitting...',
+      privacyNote: 'Your information is used only to create and deliver your music gift.',
+      submitError: 'Something went wrong. Please try again in a moment.',
+    },
+
+    steps: [
+      { title: 'Who is this gift for?', subtitle: 'Tell us a little about the recipient.' },
+      { title: 'What do you want to say?', subtitle: 'One line is all you need.' },
+      { title: 'What music do they love?', subtitle: 'Help us nail the perfect vibe.' },
+      { title: 'Where should we send it?', subtitle: 'We\'ll email you the finished gift page.' },
+      { title: 'Review your request', subtitle: 'Everything look good? Let\'s go.' },
+    ],
+
+    progressLabels: ['Recipient', 'Your message', 'Music taste', 'Contact', 'Review'],
+
+    step1: {
+      targetLabel: 'Who is this music gift for?',
+      receiverLabel: 'Recipient\'s name or nickname',
+      receiverPlaceholder: 'e.g. Jamie, Mom, Alex',
+      receiverHelp: 'This name will appear on the gift page.',
+      senderLabel: 'Your name or nickname',
+      senderPlaceholder: 'e.g. Sarah, Your biggest fan',
+      senderHelp: 'So they know who the gift is from.',
+      targets: [
+        { value: '연인', label: 'Partner', emoji: '💑' },
+        { value: '친구', label: 'Friend', emoji: '👫' },
+        { value: '가족', label: 'Family', emoji: '👨‍👩‍👧' },
+        { value: '동료', label: 'Colleague', emoji: '🤝' },
+        { value: '나', label: 'Myself', emoji: '🙋' },
+        { value: '기타', label: 'Other', emoji: '💌' },
+      ],
+      errors: {
+        target: 'Please select who this gift is for.',
+        receiver: 'Please enter the recipient\'s name or nickname.',
+        sender: 'Please enter your name or nickname.',
+      },
+    },
+
+    step2: {
+      purposeLabel: 'What\'s the occasion?',
+      messageLabel: 'Your message (one line is enough)',
+      messagePlaceholder: 'e.g. Hope this year is everything you dreamed of.',
+      messageHelp: 'A single sentence is perfect. It\'ll be featured on the gift page.',
+      messageTip: '💬 Keep it short and sweet — the simpler it is, the more it means.',
+      purposes: [
+        { value: '생일', label: 'Birthday', emoji: '🎂' },
+        { value: '기념일', label: 'Anniversary', emoji: '💝' },
+        { value: '응원', label: 'Cheering on', emoji: '🌟' },
+        { value: '위로', label: 'Comfort', emoji: '🤗' },
+        { value: '고백', label: 'Confession', emoji: '💌' },
+        { value: '감사', label: 'Thank you', emoji: '🙏' },
+        { value: '그냥 선물', label: 'Just because', emoji: '🎁' },
+      ],
+      errors: {
+        purpose: 'Please select an occasion.',
+        message: 'Please write a short message. One sentence is plenty.',
+      },
+    },
+
+    step3: {
+      artistLabel: 'Favorite artist',
+      artistPlaceholder: 'e.g. Taylor Swift, Billie Eilish, Frank Ocean',
+      artistHelp: 'We\'ll use this as inspiration for the sound.',
+      songLabel: 'Favorite song',
+      songPlaceholder: 'e.g. Lover, Ocean Eyes, Nights',
+      songHelp: 'We won\'t copy it — we\'ll just capture the feeling.',
+      moodLabel: 'Vibe / mood',
+      moodMultiple: 'Pick as many as you like.',
+      moodCustomPlaceholder: 'Add your own',
+      moodCustomAdd: 'Add',
+      moodTip: '🎵 Artist and song info is used for inspiration only. All music is fully original.',
+      moods: ['Warm', 'Chill', 'Romantic', 'Dreamy', 'Upbeat', 'Comforting', 'Late night', 'City pop', 'Acoustic', 'Ethereal'],
+      errors: {
+        artist: 'Please enter a favorite artist.',
+        song: 'Please enter a favorite song.',
+        moods: 'Please select or enter at least one mood.',
+      },
+    },
+
+    step4: {
+      emailLabel: 'Your email address',
+      emailPlaceholder: 'e.g. hello@gmail.com',
+      emailHelp: 'We\'ll send the finished gift page link here.',
+      emailPrivacy: '🔒 Your email is only used to deliver the gift page. Nothing else.',
+      mbtiLabel: 'MBTI type',
+      mbtiOptional: 'Optional',
+      mbtiHelp: 'Knowing their MBTI helps us match the music to their personality. No worries if you don\'t know!',
+      mbtiSaved: 'will be saved',
+      mbtiPartial: '💡 Select all 4 to complete their MBTI — or leave it blank.',
+      mbtiGroups: ['Energy', 'Perception', 'Judgment', 'Lifestyle'],
+      errors: {
+        emailRequired: 'Please enter your email address.',
+        emailInvalid: 'Please enter a valid email address.',
+      },
+    },
+
+    step5: {
+      intro: 'Take a look — if everything\'s right, submit below.',
+      edit: 'Edit',
+      labels: {
+        target: 'Gift for',
+        receiver: 'Recipient',
+        sender: 'From',
+        purpose: 'Occasion',
+        message: 'Message',
+        artist: 'Favorite artist',
+        song: 'Favorite song',
+        moods: 'Mood',
+        email: 'Email',
+        mbti: 'MBTI',
+        mbtiEmpty: 'Not entered',
+      },
+      privacy: 'Your info is used only to create and deliver your music gift.',
+    },
+
+    complete: {
+      title: 'Your music gift\nrequest is in!',
+      sub1: '\'s gift is on its way.',
+      sub2: 'Once it\'s ready, we\'ll send the gift page link to',
+      sub3: '.',
+      flowTitle: 'What happens next?',
+      flowSteps: ['Request received', 'Music created with Suno AI', 'Gift page prepared', 'Link sent to your email', 'You share it with them'],
+      tip: '💌 Check the gift page first, then share the link however you like — text, DM, email.',
+      backHome: 'Back to home',
+    },
+
+    gift: {
+      loading: 'Opening your gift...',
+      errorTitle: 'Gift not found',
+      errorSub: 'We couldn\'t load the gift. Please double-check the link.',
+      backHome: 'Back to home',
+      giftFor: 'A music gift for',
+      messageLabel: 'Message',
+      arrived: 'A song made just for you has arrived',
+      playNow: '🎵 Play now',
+      openDrive: '🎧 Open in Google Drive',
+      preparing: 'Your music gift is still being prepared',
+      preparingSub: 'We\'ll notify the sender when it\'s ready.\nHang tight — good things take a moment 🙏',
+      musicInfoLabel: 'Music details',
+      musicInfoRows: ['Inspired by', 'Reference track', 'Vibe', 'MBTI'],
+      copyright: 'All music is original. We use artist and song references only as creative inspiration.',
+      copyLink: '🔗 Copy link',
+      copied: '✅ Copied!',
+      makeYours: '🎁 Create your own music gift',
+    },
+  },
+
+  // =====================
+  // 日本語
+  // =====================
+  ja: {
+    nav: {
+      cta: '音楽ギフトを作る',
+    },
+
+    landing: {
+      badge: '🎵 あなたの想いを、世界にひとつの音楽に。',
+      heroTitle1: '大切な人に、',
+      heroTitle2: '音楽を贈ろう',
+      heroTitle3: '。',
+      heroSub: '短いメッセージと好きな曲を教えてください。\nその人だけのための音楽ギフトページをお届けします。',
+      heroCta: '🎁 音楽ギフトを作る',
+      heroNote: '3分もあれば完成します。ギフトページのリンクはメールでお届けします。',
+      giftCardFor: 'A music gift for',
+      giftCardFrom: 'From.',
+      giftCardSample: '"いつもそのままでいてね。あなたが輝いていますように。"',
+      giftCardMusicReady: 'あなただけの曲が完成しました',
+      giftCardMusicInfo: '藤井風っぽい · あたたかい · 落ち着く',
+      valueSectionTitle: '音楽ファイルを送るだけじゃない。',
+      valueSectionSub: 'リンクを開いたとき、こんな体験が待っています。',
+      valueCards: [
+        { emoji: '💬', title: '一言メッセージ入りのギフトカード', desc: '長い手紙は不要です。短い一言でも、気持ちはちゃんと届きます。' },
+        { emoji: '🎧', title: 'その人の好みに合わせた音楽', desc: '好きなアーティストや雰囲気をもとに、その人だけのための曲を制作します。' },
+        { emoji: '🔗', title: 'すぐにシェアできるギフトページ', desc: 'リンクひとつで音楽もメッセージも届けられます。アプリのインストール不要。' },
+      ],
+      howTitle: 'どうやって作るの？',
+      howSub: '申込みからギフト完成まで、5ステップ。',
+      howSteps: [
+        { step: '01', icon: '🙋', title: '贈る相手を決めます', desc: '恋人・友だち・家族など、誰に贈るか教えてください。' },
+        { step: '02', icon: '🎵', title: '好きな音楽を教えます', desc: '好みをもとに、世界にひとつだけの曲を作ります。' },
+        { step: '03', icon: '🎁', title: 'Music for Uが準備します', desc: 'ギフトページを丁寧に制作しますので、少々お待ちください。' },
+        { step: '04', icon: '📧', title: '完成リンクをメールで受け取ります', desc: 'ギフトページのリンクをメールでお届けします。' },
+        { step: '05', icon: '💌', title: '大切な人に直接渡します', desc: 'LINE・SMS・DMなどでリンクをシェアしてください。' },
+      ],
+      ctaTitle: '今すぐ、想いを音楽に。',
+      ctaSub: '3分でOK。長い手紙は必要ありません。',
+      footerNote: '入力いただいたアーティスト・楽曲は、雰囲気の参考にのみ使用します。\n既存の曲をコピーせず、世界にひとつのオリジナル楽曲として制作します。',
+    },
+
+    form: {
+      timeNote: '3分もあれば完成します',
+      next: '次へ',
+      back: '前に戻る',
+      submit: '申込みを送る',
+      submitting: '送信中...',
+      privacyNote: '入力内容は音楽制作とギフトページのお届けにのみ使用します。',
+      submitError: 'エラーが発生しました。しばらくしてからもう一度お試しください。',
+    },
+
+    steps: [
+      { title: '誰に贈りますか？', subtitle: '受け取る方の情報を教えてください。' },
+      { title: 'どんな気持ちを伝えますか？', subtitle: '一言でも十分です。' },
+      { title: 'どんな音楽が好きですか？', subtitle: '好みを教えていただくと、より合った曲を作れます。' },
+      { title: 'ギフトページはどこに届けますか？', subtitle: '完成したリンクをメールでお届けします。' },
+      { title: '申込み内容を確認します', subtitle: '内容が正しければ、下のボタンを押してください。' },
+    ],
+
+    progressLabels: ['受け取る方', '気持ち', '音楽の好み', '連絡先', '確認'],
+
+    step1: {
+      targetLabel: '誰への音楽ギフトですか？',
+      receiverLabel: '受け取る方のお名前またはニックネーム',
+      receiverPlaceholder: '例：みほ、お母さん、タカシ',
+      receiverHelp: 'ギフトページに表示される名前です。',
+      senderLabel: 'あなたのお名前またはニックネーム',
+      senderPlaceholder: '例：けんと、いつも応援してる友達',
+      senderHelp: '誰からのギフトかが伝わります。',
+      targets: [
+        { value: '연인', label: '恋人', emoji: '💑' },
+        { value: '친구', label: '友だち', emoji: '👫' },
+        { value: '가족', label: '家族', emoji: '👨‍👩‍👧' },
+        { value: '동료', label: '同僚', emoji: '🤝' },
+        { value: '나', label: '自分へ', emoji: '🙋' },
+        { value: '기타', label: 'その他', emoji: '💌' },
+      ],
+      errors: {
+        target: '誰への音楽か選択してください。',
+        receiver: '受け取る方のお名前またはニックネームを入力してください。',
+        sender: 'あなたのお名前またはニックネームを入力してください。',
+      },
+    },
+
+    step2: {
+      purposeLabel: 'どんな贈り物ですか？',
+      messageLabel: '伝えたい気持ちをひと言で',
+      messagePlaceholder: '例：いつもそのままでいてね。',
+      messageHelp: '一文でも十分です。ギフトページにそのまま掲載されます。',
+      messageTip: '💬 長い手紙は不要です。シンプルなひと言ほど、心に響くものです。',
+      purposes: [
+        { value: '생일', label: '誕生日', emoji: '🎂' },
+        { value: '기념일', label: '記念日', emoji: '💝' },
+        { value: '응원', label: '応援', emoji: '🌟' },
+        { value: '위로', label: '慰め', emoji: '🤗' },
+        { value: '고백', label: '告白', emoji: '💌' },
+        { value: '감사', label: '感謝', emoji: '🙏' },
+        { value: '그냥 선물', label: '気持ちだけ', emoji: '🎁' },
+      ],
+      errors: {
+        purpose: '贈り物の目的を選択してください。',
+        message: '気持ちをひと言入力してください。一文でも十分です。',
+      },
+    },
+
+    step3: {
+      artistLabel: '好きなアーティスト名',
+      artistPlaceholder: '例：米津玄師、YOASOBI、藤井風',
+      artistHelp: '音楽の雰囲気を参考にするための情報です。',
+      songLabel: '好きな曲のタイトル',
+      songPlaceholder: '例：Lemon、夜に駆ける、damn',
+      songHelp: '既存の曲はコピーしません。感性や雰囲気だけを参考にします。',
+      moodLabel: '希望する音楽の雰囲気',
+      moodMultiple: '複数選んでもOKです。',
+      moodCustomPlaceholder: '自由に入力',
+      moodCustomAdd: '追加',
+      moodTip: '🎵 アーティストと楽曲は雰囲気の参考のみに使用します。既存曲のコピーではなく、完全オリジナルの楽曲を制作します。',
+      moods: ['あたたかい', 'しっとり', 'ときめく', 'ドリーミー', 'アップテンポ', '癒し系', 'ロマンチック', '深夜感', 'シティポップ', 'アコースティック'],
+      errors: {
+        artist: '参考にするアーティスト名を入力してください。',
+        song: '参考にする曲のタイトルを入力してください。',
+        moods: '希望する音楽の雰囲気を選択または入力してください。',
+      },
+    },
+
+    step4: {
+      emailLabel: 'ギフトページを受け取るメールアドレス',
+      emailPlaceholder: '例：hello@gmail.com',
+      emailHelp: '完成したギフトページのリンクをこちらにお届けします。',
+      emailPrivacy: '🔒 メールアドレスはギフトページのお届けのみに使用します。',
+      mbtiLabel: 'MBTI',
+      mbtiOptional: '任意',
+      mbtiHelp: '受け取る方のMBTIがわかると、より合った音楽を作れます。わからなくても大丈夫です！',
+      mbtiSaved: 'として保存されます',
+      mbtiPartial: '💡 4つすべて選ぶとMBTIが完成します。空欄のままでもOKです。',
+      mbtiGroups: ['エネルギー', '認識', '判断', '生活様式'],
+      errors: {
+        emailRequired: 'メールアドレスを入力してください。',
+        emailInvalid: '正しいメールアドレスを入力してください。',
+      },
+    },
+
+    step5: {
+      intro: '内容を確認して、申込みを送ってください。',
+      edit: '修正',
+      labels: {
+        target: '贈る相手',
+        receiver: '受け取る方',
+        sender: '贈る方',
+        purpose: '目的',
+        message: 'メッセージ',
+        artist: '好きなアーティスト',
+        song: '好きな曲',
+        moods: '雰囲気',
+        email: 'メール',
+        mbti: 'MBTI',
+        mbtiEmpty: '未入力',
+      },
+      privacy: '入力内容は音楽制作とギフトページのお届けにのみ使用します。',
+    },
+
+    complete: {
+      title: '音楽ギフトの\n申込みを受け付けました！',
+      sub1: 'さんへのギフトを準備します。',
+      sub2: '完成したら、',
+      sub3: 'にギフトページのリンクをお届けします。',
+      flowTitle: 'これからどうなるの？',
+      flowSteps: ['申込み受付完了', 'Suno AIで楽曲制作', 'ギフトページ完成', 'メールでリンク送付', '大切な人に直接プレゼント'],
+      tip: '💌 ギフトページを先にご確認いただいてから、LINE・SMS・DMなどで大切な方にシェアしてください。',
+      backHome: 'ホームに戻る',
+    },
+
+    gift: {
+      loading: 'ギフトを開いています...',
+      errorTitle: 'ギフトが見つかりません',
+      errorSub: 'ギフト情報を読み込めませんでした。リンクをご確認ください。',
+      backHome: 'ホームに戻る',
+      giftFor: 'A music gift for',
+      messageLabel: 'Message',
+      arrived: 'あなただけのために作られた曲が届きました',
+      playNow: '🎵 再生する',
+      openDrive: '🎧 Google Driveで聴く',
+      preparing: 'まだギフトの準備中です',
+      preparingSub: '完成したら申込み者のメールにお知らせします。\nもう少しだけお待ちください 🙏',
+      musicInfoLabel: '楽曲情報',
+      musicInfoRows: ['参考アーティスト', '参考楽曲', '雰囲気', 'MBTI'],
+      copyright: '既存の曲をコピーせず、雰囲気・感性を参考にしたオリジナル楽曲です。',
+      copyLink: '🔗 リンクをコピー',
+      copied: '✅ コピーしました！',
+      makeYours: '🎁 自分もギフトを作る',
+    },
+  },
+};
+
+// 현재 언어의 번역을 가져오는 함수
+export function t(lang, path) {
+  const keys = path.split('.');
+  let result = translations[lang] || translations.ko;
+  for (const key of keys) {
+    result = result?.[key];
+    if (result === undefined) return path;
+  }
+  return result;
+}
