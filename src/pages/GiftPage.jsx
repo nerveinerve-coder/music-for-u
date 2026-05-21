@@ -196,7 +196,7 @@ export function GiftPage() {
                   </div>
                 )}
 
-                {/* Drive 링크일 때만 버튼 표시 */}
+                {/* Google Drive 링크일 때: Drive에서 듣기 버튼 */}
                 {showDriveButton && (
                   <>
                     <a href={gift.driveUrl} target="_blank" rel="noopener noreferrer">
@@ -208,6 +208,21 @@ export function GiftPage() {
                         : '재생이 안 되면 위 버튼으로 들어보세요.'}
                     </p>
                   </>
+                )}
+
+                {/* Cloudinary 링크일 때: 다운로드 버튼 */}
+                {urlType === 'cloudinary' && (
+                  <a
+                    href={gift.driveUrl}
+                    download
+                    aria-label="음악 파일 다운로드"
+                  >
+                    <Button fullWidth size="lg" variant="secondary">
+                      {lang === 'ja' ? '⬇️ 音楽をダウンロード'
+                        : lang === 'en' ? '⬇️ Download music'
+                        : '⬇️ 음악 다운로드'}
+                    </Button>
+                  </a>
                 )}
               </div>
             ) : (
