@@ -36,6 +36,7 @@ export function GiftPage() {
   const [error, setError] = useState('');
   const [copied, setCopied] = useState(false);
   const [lyricsOpen, setLyricsOpen] = useState(false);
+  const [downloading, setDownloading] = useState(false);
 
   useEffect(() => {
     if (!giftId) { setError(T.errorSub); setLoading(false); return; }
@@ -48,6 +49,30 @@ export function GiftPage() {
     try { await navigator.clipboard.writeText(window.location.href); }
     catch { /* fallback */ }
     setCopied(true); setTimeout(() => setCopied(false), 2500);
+  };
+
+  // 모바일에서도 동작하는 다운로드 함수
+  // iOS Safari는 download 속성이 외부 도메인에서 작동 안 해서 fetch로 직접 받아요
+  const handleDownload = async () => {
+    if (!gift?.driveUrl) return;
+    setDownloading(true);
+    try {
+      const response = await fetch(gift.driveUrl);
+      const blob = await response.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'music-gift.wav';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    } catch {
+      // fetch 실패 시 새 탭으로 열기 (fallback)
+      window.open(gift.driveUrl, '_blank');
+    } finally {
+      setDownloading(false);
+    }
   };
 
   if (loading) return (
@@ -139,18 +164,19 @@ export function GiftPage() {
                       <source src={gift.driveUrl} />
                     </audio>
                     {/* 모바일 다운로드 버튼 - 오디오 플레이어 바로 아래 */}
-                    <a
-                      href={gift.driveUrl}
-                      download
+                    <button
+                      type="button"
+                      onClick={handleDownload}
+                      disabled={downloading}
                       className="flex items-center justify-center gap-2 mt-3 w-full py-2.5 rounded-xl text-sm font-medium transition-colors"
-                      style={{ backgroundColor: 'rgba(107,163,214,0.15)', color: '#6BA3D6' }}
+                      style={{ backgroundColor: 'rgba(107,163,214,0.15)', color: '#6BA3D6', cursor: 'pointer' }}
                       aria-label="음악 다운로드"
                     >
-                      <span>⬇️</span>
-                      <span>
-                        {lang === 'ja' ? '음楽をダウンロード' : lang === 'en' ? 'Download music' : '음악 다운로드'}
-                      </span>
-                    </a>
+                      {downloading
+                        ? <><span className="inline-block w-3.5 h-3.5 border-2 border-current border-t-transparent rounded-full animate-spin" /><span>{lang === 'ja' ? 'ダウンロード中...' : lang === 'en' ? 'Downloading...' : '다운로드 중...'}</span></>
+                        : <><span>⬇️</span><span>{lang === 'ja' ? '音楽をダウンロード' : lang === 'en' ? 'Download music' : '음악 다운로드'}</span></>
+                      }
+                    </button>
                   </div>
                 )}
 
@@ -223,20 +249,6 @@ export function GiftPage() {
                   </>
                 )}
 
-                {/* Cloudinary 링크일 때: 다운로드 버튼 */}
-                {urlType === 'cloudinary' && (
-                  <a
-                    href={gift.driveUrl}
-                    download
-                    aria-label="음악 파일 다운로드"
-                  >
-                    <Button fullWidth size="lg" variant="secondary">
-                      {lang === 'ja' ? '⬇️ 音楽をダウンロード'
-                        : lang === 'en' ? '⬇️ Download music'
-                        : '⬇️ 음악 다운로드'}
-                    </Button>
-                  </a>
-                )}
               </div>
             ) : (
               <div className="text-center py-4">
