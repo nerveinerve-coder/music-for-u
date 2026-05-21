@@ -138,6 +138,19 @@ export function GiftPage() {
                     >
                       <source src={gift.driveUrl} />
                     </audio>
+                    {/* 모바일 다운로드 버튼 - 오디오 플레이어 바로 아래 */}
+                    <a
+                      href={gift.driveUrl}
+                      download
+                      className="flex items-center justify-center gap-2 mt-3 w-full py-2.5 rounded-xl text-sm font-medium transition-colors"
+                      style={{ backgroundColor: 'rgba(107,163,214,0.15)', color: '#6BA3D6' }}
+                      aria-label="음악 다운로드"
+                    >
+                      <span>⬇️</span>
+                      <span>
+                        {lang === 'ja' ? '음楽をダウンロード' : lang === 'en' ? 'Download music' : '음악 다운로드'}
+                      </span>
+                    </a>
                   </div>
                 )}
 
