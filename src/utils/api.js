@@ -66,3 +66,43 @@ export async function fetchGiftData(giftId) {
 
   return data.gift;
 }
+
+/**
+ * 내 음악 신청 데이터를 저장해요
+ */
+export async function submitMyMusicRequest(formData) {
+  if (!APPS_SCRIPT_URL) {
+    throw new Error('APPS_SCRIPT_URL이 설정되지 않았어요.');
+  }
+
+  const response = await fetch(APPS_SCRIPT_URL, {
+    method: 'POST',
+    body: JSON.stringify({ ...formData, type: 'my-music' }),
+    headers: { 'Content-Type': 'text/plain' },
+    redirect: 'follow',
+  });
+
+  if (!response.ok) throw new Error(`서버 오류가 발생했어요. (${response.status})`);
+
+  const data = await response.json();
+  if (data.status !== 'success') throw new Error(data.message || '저장 중 오류가 발생했어요.');
+
+  return data;
+}
+
+/**
+ * 내 음악 페이지 데이터를 가져와요
+ */
+export async function fetchMyMusicData(myId) {
+  if (!APPS_SCRIPT_URL) throw new Error('APPS_SCRIPT_URL이 설정되지 않았어요.');
+
+  const url = `${APPS_SCRIPT_URL}?action=getMyMusic&id=${encodeURIComponent(myId)}`;
+  const response = await fetch(url, { method: 'GET', redirect: 'follow' });
+
+  if (!response.ok) throw new Error(`데이터를 불러오지 못했어요. (${response.status})`);
+
+  const data = await response.json();
+  if (data.status !== 'success') throw new Error(data.message || '데이터를 찾지 못했어요.');
+
+  return data.myMusic;
+}

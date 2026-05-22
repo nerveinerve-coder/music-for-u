@@ -4,6 +4,9 @@ import { LandingPage } from './pages/LandingPage';
 import { GiftFormPage } from './pages/GiftFormPage';
 import { CompletePage } from './pages/CompletePage';
 import { GiftPage } from './pages/GiftPage';
+import { MyMusicFormPage } from './pages/MyMusicFormPage';
+import { MyMusicCompletePage } from './pages/MyMusicCompletePage';
+import { MyMusicPage } from './pages/MyMusicPage';
 
 function App() {
   return (
@@ -14,8 +17,12 @@ function App() {
           <Route path="/gift-form" element={<GiftFormPage />} />
           <Route path="/complete" element={<CompletePage />} />
           <Route path="/gift/:giftId" element={<GiftPage />} />
+          <Route path="/my-music-form" element={<MyMusicFormPage />} />
+          <Route path="/my-music-complete" element={<MyMusicCompletePage />} />
+          <Route path="/my-music/:myId" element={<MyMusicPage />} />
           <Route path="*" element={
-            <div className="min-h-screen flex flex-col items-center justify-center px-5 text-center" style={{ backgroundColor: '#0F0F14' }}>
+            <div className="min-h-screen flex flex-col items-center justify-center px-5 text-center"
+              style={{ backgroundColor: '#0F0F14' }}>
               <div className="text-4xl mb-4">🎵</div>
               <h1 className="text-xl font-semibold mb-2" style={{ color: '#F0F0F5' }}>Page not found</h1>
               <a href="/" className="text-sm font-medium underline" style={{ color: '#6BA3D6' }}>Go home</a>

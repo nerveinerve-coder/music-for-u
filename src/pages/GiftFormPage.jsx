@@ -86,7 +86,7 @@ export function GiftFormPage() {
         senderName: formData.senderName.trim(), giftPurpose: formData.giftPurpose,
         message: formData.message.trim(), artistName: formData.artistName.trim(),
         songTitle: formData.songTitle.trim(), moods: formData.moods.join(', '),
-        email: formData.email.trim(), mbti: mbtiString, language: lang,
+        email: formData.email.trim(), mbti: mbtiString, language: lang, type: "gift",
       };
       const result = await submitGiftRequest(payload);
       navigate('/complete', { state: { giftId: result.giftId, receiverName: formData.receiverName, email: formData.email } });
