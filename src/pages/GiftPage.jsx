@@ -35,9 +35,6 @@ function getDrivePreviewUrl(driveUrl) {
 export function GiftPage() {
   const { giftId } = useParams();
   const { lang } = useLang();
-  // 신청 시 선택한 언어를 사용 (없으면 현재 앱 언어)
-  const displayLang = gift?.language || lang;
-  const T = translations[displayLang]?.gift || translations[lang]?.gift;
   const [gift, setGift] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -45,6 +42,12 @@ export function GiftPage() {
   const [lyricsOpen, setLyricsOpen] = useState(false);
   const [messageOpen, setMessageOpen] = useState(false);
   const [downloading, setDownloading] = useState(false);
+
+  // 신청 시 선택한 언어를 사용 (없으면 현재 앱 언어, 최종 fallback은 한국어)
+  const displayLang = gift?.language || lang;
+  const T = translations[displayLang]?.gift
+         || translations[lang]?.gift
+         || translations['ko']?.gift;
 
   useEffect(() => {
     if (!giftId) { setError(T.errorSub); setLoading(false); return; }

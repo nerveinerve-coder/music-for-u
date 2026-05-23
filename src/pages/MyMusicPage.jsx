@@ -35,15 +35,18 @@ function getDrivePreviewUrl(driveUrl) {
 export function MyMusicPage() {
   const { myId } = useParams();
   const { lang } = useLang();
-  // 신청 시 선택한 언어를 사용 (없으면 현재 앱 언어)
-  const displayLang = myMusic?.language || lang;
-  const T = translations[displayLang]?.myMusic?.page || translations[lang]?.myMusic?.page;
   const [myMusic, setMyMusic] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [copied, setCopied] = useState(false);
   const [lyricsOpen, setLyricsOpen] = useState(false);
   const [downloading, setDownloading] = useState(false);
+
+  // 신청 시 선택한 언어를 사용 (없으면 현재 앱 언어, 최종 fallback은 한국어)
+  const displayLang = myMusic?.language || lang;
+  const T = translations[displayLang]?.myMusic?.page
+         || translations[lang]?.myMusic?.page
+         || translations['ko']?.myMusic?.page;
 
   useEffect(() => {
     if (!myId) { setError(T?.errorSub || ''); setLoading(false); return; }
