@@ -6,8 +6,7 @@ import { useLang } from '../hooks/useLang';
 import { translations } from '../utils/i18n';
 
 // 가사를 화면에 표시하기 위해 정리하는 함수
-// 1) 시트 저장 시 
- → ' | ' 로 변환된 것을 복원
+// 1) 시트 저장 시 \n 을 ' | ' 로 변환한 것을 복원
 // 2) [대괄호] 안의 내용 제거
 function stripBrackets(text) {
   if (!text) return '';
