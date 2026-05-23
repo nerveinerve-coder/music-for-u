@@ -5,10 +5,20 @@ import { Button } from '../components/Button';
 import { useLang } from '../hooks/useLang';
 import { translations } from '../utils/i18n';
 
-// [대괄호] 안의 내용을 제거하는 함수
+// 가사를 화면에 표시하기 위해 정리하는 함수
+// 1) 시트 저장 시 
+ → ' | ' 로 변환된 것을 복원
+// 2) [대괄호] 안의 내용 제거
 function stripBrackets(text) {
   if (!text) return '';
-  return text.replace(/\[.*?\]/g, '').replace(/\n{3,}/g, '\n\n').trim();
+  const restored = text.replace(/ \| /g, '\n');
+  return restored.replace(/\[.*?\]/g, '').replace(/\n{3,}/g, '\n\n').trim();
+}
+
+// [TEST] 접두사를 제거하는 함수
+function stripTestPrefix(text) {
+  if (!text) return '';
+  return text.replace(/^\[TEST\]\s*/i, '').trim();
 }
 
 function getUrlType(url) {
@@ -98,14 +108,15 @@ export function GiftPage() {
   const hasLyrics = cleanLyrics && cleanLyrics.length > 0;
   const hasMessage = gift?.message && gift.message.trim().length > 0;
 
+  const cleanReceiverName = stripTestPrefix(gift?.receiverName);
   const receiverLabel = lang === 'ko'
-    ? `${gift?.receiverName}님에게 전하는 선물`
+    ? `${cleanReceiverName}님에게 전하는 선물`
     : lang === 'ja'
-    ? `${gift?.receiverName}さんへのギフト`
-    : `A gift for ${gift?.receiverName}`;
+    ? `${cleanReceiverName}さんへのギフト`
+    : `A gift for ${cleanReceiverName}`;
 
   const musicInfoRows = [
-    [T.musicInfoRows[0], gift?.artistName],
+    [T.musicInfoRows[0], stripTestPrefix(gift?.artistName)],
     [T.musicInfoRows[1], gift?.songTitle],
     [T.musicInfoRows[2], gift?.moods],
     gift?.mbti ? [T.musicInfoRows[3], gift.mbti] : null,
@@ -158,7 +169,7 @@ export function GiftPage() {
 
             {/* Suno Title */}
             <h1 className="font-display text-2xl font-bold mb-2" style={{ color: '#F0F0F5' }}>
-              {gift?.sunoTitle || `${gift?.artistName} × ${gift?.songTitle}`}
+              {gift?.sunoTitle || `${stripTestPrefix(gift?.artistName)} × ${gift?.songTitle}`}
             </h1>
 
             {/* 분위기 */}

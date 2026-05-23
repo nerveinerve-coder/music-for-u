@@ -5,10 +5,20 @@ import { Button } from '../components/Button';
 import { useLang } from '../hooks/useLang';
 import { translations } from '../utils/i18n';
 
-// [대괄호] 안의 내용을 제거하는 함수
+// 가사를 화면에 표시하기 위해 정리하는 함수
+// 1) 시트 저장 시 
+ → ' | ' 로 변환된 것을 복원
+// 2) [대괄호] 안의 내용 제거
 function stripBrackets(text) {
   if (!text) return '';
-  return text.replace(/\[.*?\]/g, '').replace(/\n{3,}/g, '\n\n').trim();
+  const restored = text.replace(/ \| /g, '\n');
+  return restored.replace(/\[.*?\]/g, '').replace(/\n{3,}/g, '\n\n').trim();
+}
+
+// [TEST] 접두사를 제거하는 함수 (테스트 데이터가 UI에 노출되지 않도록)
+function stripTestPrefix(text) {
+  if (!text) return '';
+  return text.replace(/^\[TEST\]\s*/i, '').trim();
 }
 
 function getUrlType(url) {
@@ -99,7 +109,7 @@ export function MyMusicPage() {
   const hasLyrics = cleanLyrics && cleanLyrics.length > 0;
 
   const musicInfoRows = [
-    [T.musicInfoRows[0], myMusic?.artistName],
+    [T.musicInfoRows[0], stripTestPrefix(myMusic?.artistName)],
     [T.musicInfoRows[1], myMusic?.songTitle],
     [T.musicInfoRows[2], myMusic?.moods],
     myMusic?.mbti ? [T.musicInfoRows[3], myMusic.mbti] : null,
@@ -147,7 +157,7 @@ export function MyMusicPage() {
               </div>
             )}
             <h1 className="font-display text-2xl font-bold" style={{ color: '#F0F0F5' }}>
-              {myMusic?.sunoTitle || `${myMusic?.artistName} × ${myMusic?.songTitle}`}
+              {myMusic?.sunoTitle || `${stripTestPrefix(myMusic?.artistName)} × ${myMusic?.songTitle}`}
             </h1>
             <p className="text-sm mt-2" style={{ color: '#9090A8' }}>
               {(myMusic?.moods || '').split(', ').join(' · ')}
