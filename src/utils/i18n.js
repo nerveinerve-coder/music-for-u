@@ -99,9 +99,9 @@ export const translations = {
     // Step 2
     step2: {
       purposeLabel: '어떤 선물인가요?',
-      messageLabel: '전하고 싶은 마음 한 줄',
+      messageLabel: '전하고 싶은 메시지',
       messagePlaceholder: '예: 올해도 너답게 빛났으면 좋겠어.',
-      messageHelp: '한 문장만 적어도 충분해요. 이 메시지는 선물 페이지에 담겨요.',
+      messageHelp: '한 문장만 적어도 괜찮아요. 이 메시지는 선물 페이지에 담겨요.',
       messageTip: '💬 편지처럼 길게 쓰지 않아도 괜찮아요. 짧을수록 마음이 더 잘 전달되기도 해요.',
       purposes: [
         { value: '생일', label: '생일', emoji: '🎂' },
@@ -114,7 +114,7 @@ export const translations = {
       ],
       errors: {
         purpose: '선물 목적을 선택해주세요.',
-        message: '짧은 메시지를 입력해주세요. 한 문장만 적어도 충분해요.',
+        message: '메시지를 입력해주세요. 한 문장만 적어도 괜찮아요.',
       },
     },
 

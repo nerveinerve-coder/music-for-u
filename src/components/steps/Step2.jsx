@@ -30,7 +30,7 @@ export function Step2({ data, errors, onChange }) {
       <Textarea id="message" label={T.messageLabel} value={data.message}
         onChange={e => onChange('message', e.target.value)}
         placeholder={T.messagePlaceholder} helpText={T.messageHelp}
-        errorMessage={errors.message ? T.errors.message : ''} required rows={3} maxLength={150} />
+        errorMessage={errors.message ? T.errors.message : ''} required rows={3} maxLength={1000} />
       <div className="rounded-2xl p-4 text-xs leading-relaxed"
         style={{ backgroundColor: 'rgba(201,169,110,0.08)', border: '1px solid rgba(201,169,110,0.12)', color: '#9090A8' }}>
         {T.messageTip}

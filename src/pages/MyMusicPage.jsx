@@ -147,7 +147,7 @@ export function MyMusicPage() {
               </div>
             )}
             <h1 className="font-display text-2xl font-bold" style={{ color: '#F0F0F5' }}>
-              {myMusic?.artistName} × {myMusic?.songTitle}
+              {myMusic?.sunoTitle || `${myMusic?.artistName} × ${myMusic?.songTitle}`}
             </h1>
             <p className="text-sm mt-2" style={{ color: '#9090A8' }}>
               {(myMusic?.moods || '').split(', ').join(' · ')}
@@ -268,6 +268,9 @@ export function MyMusicPage() {
           </Button>
           <Link to="/gift-form">
             <Button fullWidth variant="ghost">{T.makeGift}</Button>
+          </Link>
+          <Link to="/">
+            <Button fullWidth variant="ghost">{lang === 'ja' ? 'ホームへ' : lang === 'en' ? 'Go to home' : '홈으로 가기'}</Button>
           </Link>
         </div>
       </main>
