@@ -5,9 +5,7 @@ import { Button } from '../components/Button';
 import { useLang } from '../hooks/useLang';
 import { translations } from '../utils/i18n';
 
-// 가사를 화면에 표시하기 위해 정리하는 함수
-// 1) 시트 저장 시 \n 을 ' | ' 로 변환한 것을 복원
-// 2) [대괄호] 안의 내용 제거
+// 가사 정리: 시트 저장시 변환된 구분자를 줄바꿈으로 복원하고 대괄호 제거
 function stripBrackets(text) {
   if (!text) return '';
   const restored = text.replace(/ \| /g, '\n');
@@ -37,7 +35,9 @@ function getDrivePreviewUrl(driveUrl) {
 export function MyMusicPage() {
   const { myId } = useParams();
   const { lang } = useLang();
-  const T = translations[lang]?.myMusic?.page;
+  // 신청 시 선택한 언어를 사용 (없으면 현재 앱 언어)
+  const displayLang = myMusic?.language || lang;
+  const T = translations[displayLang]?.myMusic?.page || translations[lang]?.myMusic?.page;
   const [myMusic, setMyMusic] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -279,7 +279,7 @@ export function MyMusicPage() {
             <Button fullWidth variant="ghost">{T.makeGift}</Button>
           </Link>
           <Link to="/">
-            <Button fullWidth variant="ghost">{lang === 'ja' ? 'ホームへ' : lang === 'en' ? 'Go to home' : '홈으로 가기'}</Button>
+            <Button fullWidth variant="ghost">{displayLang === 'ja' ? 'ホームへ' : displayLang === 'en' ? 'Go to home' : '홈으로 가기'}</Button>
           </Link>
         </div>
       </main>

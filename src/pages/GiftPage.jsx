@@ -5,9 +5,7 @@ import { Button } from '../components/Button';
 import { useLang } from '../hooks/useLang';
 import { translations } from '../utils/i18n';
 
-// 가사를 화면에 표시하기 위해 정리하는 함수
-// 1) 시트 저장 시 \n 을 ' | ' 로 변환한 것을 복원
-// 2) [대괄호] 안의 내용 제거
+// 가사 정리: 시트 저장시 변환된 구분자를 줄바꿈으로 복원하고 대괄호 제거
 function stripBrackets(text) {
   if (!text) return '';
   const restored = text.replace(/ \| /g, '\n');
@@ -37,7 +35,9 @@ function getDrivePreviewUrl(driveUrl) {
 export function GiftPage() {
   const { giftId } = useParams();
   const { lang } = useLang();
-  const T = translations[lang].gift;
+  // 신청 시 선택한 언어를 사용 (없으면 현재 앱 언어)
+  const displayLang = gift?.language || lang;
+  const T = translations[displayLang]?.gift || translations[lang]?.gift;
   const [gift, setGift] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -108,9 +108,9 @@ export function GiftPage() {
   const hasMessage = gift?.message && gift.message.trim().length > 0;
 
   const cleanReceiverName = stripTestPrefix(gift?.receiverName);
-  const receiverLabel = lang === 'ko'
+  const receiverLabel = displayLang === 'ko'
     ? `${cleanReceiverName}님에게 전하는 선물`
-    : lang === 'ja'
+    : displayLang === 'ja'
     ? `${cleanReceiverName}さんへのギフト`
     : `A gift for ${cleanReceiverName}`;
 
@@ -190,7 +190,7 @@ export function GiftPage() {
                   <div className="rounded-2xl p-4"
                     style={{ backgroundColor: 'rgba(107,163,214,0.08)', border: '1px solid rgba(107,163,214,0.2)' }}>
                     <p className="text-xs text-center mb-3" style={{ color: '#9090A8' }}>
-                      {lang === 'ja' ? '🎵 再生する' : lang === 'en' ? '🎵 Play now' : '🎵 바로 재생해보세요'}
+                      {displayLang === 'ja' ? '🎵 再生する' : displayLang === 'en' ? '🎵 Play now' : '🎵 바로 재생해보세요'}
                     </p>
                     <audio controls preload="metadata" className="w-full" aria-label="음악 선물 재생">
                       <source src={gift.driveUrl} />
@@ -209,9 +209,9 @@ export function GiftPage() {
                     aria-label="음악 다운로드">
                     {downloading
                       ? <><span className="inline-block w-3.5 h-3.5 border-2 border-current border-t-transparent rounded-full animate-spin" />
-                          <span>{lang === 'ja' ? 'ダウンロード中...' : lang === 'en' ? 'Downloading...' : '다운로드 중...'}</span></>
+                          <span>{displayLang === 'ja' ? 'ダウンロード中...' : displayLang === 'en' ? 'Downloading...' : '다운로드 중...'}</span></>
                       : <><span>⬇️</span>
-                          <span>{lang === 'ja' ? '音楽をダウンロード' : lang === 'en' ? 'Download music' : '음악 다운로드'}</span></>
+                          <span>{displayLang === 'ja' ? '音楽をダウンロード' : displayLang === 'en' ? 'Download music' : '음악 다운로드'}</span></>
                     }
                   </button>
                 )}
@@ -243,7 +243,7 @@ export function GiftPage() {
                       <div className="flex items-center gap-2">
                         <span style={{ color: '#6BA3D6', fontSize: '14px' }}>♪</span>
                         <span className="text-sm font-medium" style={{ color: '#F0F0F5' }}>
-                          {lang === 'ja' ? '歌詞' : lang === 'en' ? 'Lyrics' : '가사'}
+                          {displayLang === 'ja' ? '歌詞' : displayLang === 'en' ? 'Lyrics' : '가사'}
                         </span>
                       </div>
                       <span style={{
@@ -338,7 +338,7 @@ export function GiftPage() {
           </Link>
           <Link to="/">
             <Button fullWidth variant="ghost">
-              {lang === 'ja' ? 'ホームへ' : lang === 'en' ? 'Go to home' : '홈으로 가기'}
+              {displayLang === 'ja' ? 'ホームへ' : displayLang === 'en' ? 'Go to home' : '홈으로 가기'}
             </Button>
           </Link>
         </div>
