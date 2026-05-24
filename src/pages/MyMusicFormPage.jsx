@@ -115,7 +115,7 @@ export function MyMusicFormPage() {
       });
     } catch (error) {
       console.error(error);
-      setSubmitError(T.form.submitError);
+      setSubmitError(error.message || T.form.submitError);
       setIsSubmitting(false);
     }
   };

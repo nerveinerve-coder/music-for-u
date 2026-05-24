@@ -92,7 +92,7 @@ export function GiftFormPage() {
       navigate('/complete', { state: { giftId: result.giftId, receiverName: formData.receiverName, email: formData.email } });
     } catch (error) {
       console.error(error);
-      setSubmitError(T.form.submitError);
+      setSubmitError(error.message || T.form.submitError);
       setIsSubmitting(false);
     }
   };
